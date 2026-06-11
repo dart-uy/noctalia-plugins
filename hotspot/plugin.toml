@@ -1,0 +1,95 @@
+id = "dart/hotspot"
+name = "Hotspot"
+version = "1.0.0"
+min_noctalia = "5.0.0"
+author = "dart"
+license = "MIT"
+tags = ["hotspot", "access point"]
+icon = "access-point"
+description = "Share internet via WiFi Hotspot."
+
+[[setting]]
+key = "device"
+type = "string"
+label = "Device"
+default = "wlp0"
+advanced = true
+
+[[setting]]
+key = "ssid"
+type = "string"
+label = "SSID"
+default = "Hotspot"
+
+[[setting]]
+key = "security"
+type = "select"
+label = "Security"
+default = "wpa-psk"
+options = [
+    { value = "wpa-psk", label = "WPA/WPA2 Personal" },
+    { value = "sae", label = "WPA3 Personal" }
+]
+
+[[setting]]
+key = "password"
+type = "string"
+label = "Password"
+default = "12345678"
+
+[[setting]]
+key = "band"
+type = "select"
+label = "Band"
+options = [
+    { value = "bg", label = "2.4GHz" },
+    { value = "a", label = "5GHz" }
+]
+default = "bg"
+advanced = true
+
+[[setting]]
+key = "bg-channel"
+type = "string"
+label = "Channel"
+default = "1"
+advanced = true
+visible_when = { key = "band", values = ["bg"] }
+
+[[setting]]
+key = "a-channel"
+type = "string"
+label = "Channel"
+default = "36"
+advanced = true
+visible_when = { key = "band", values = ["a"] }
+
+[[setting]]
+key = "channel-width"
+type = "select"
+label = "Channel width"
+options = [
+    { value = "20", label = "20MHz" },
+    { value = "40", label = "40MHz" },
+    { value = "80", label = "80MHz" }
+]
+default = 20
+advanced = true
+
+[[service]]
+id = "service"
+entry = "service.luau"
+
+[[widget]]
+id = "hotspot"
+entry = "widget.luau"
+
+    [[widget.setting]]
+    key = "show_label"
+    type = "bool"
+    label = "Show Name"
+    default = false
+
+[[shortcut]]
+id = "toggle"
+entry = "shortcut.luau"

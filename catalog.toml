@@ -1,0 +1,10 @@
+[[plugin]]
+id = "dart/hotspot"
+name = "Hotspot"
+version = "1.0.0"
+author = "dart"
+license = "MIT"
+icon = "access-point"
+description = "Share your connection via WiFi Hotspot."
+min_noctalia = "5.0.0"
+tags = ["access point", "hotspot", "ad-hoc", "ap"]
