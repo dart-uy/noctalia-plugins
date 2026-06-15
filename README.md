@@ -1,3 +1,3 @@
-# noctalia-hotspot-plugin
+# Noctalia plugins
 
-Hotspot plugin for Noctalia Shell V5
+Will update soon!
