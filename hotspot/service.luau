@@ -36,7 +36,7 @@ local function toggle(action: string)
 end
 
 local function initHotspot()
-    if not noctalia.commandExists("nmcli") or not noctalia.commandExists("awk") then
+    if not noctalia.commandExists("nmcli") then
         noctalia.notifyError("Hotspot plugin", "Hotspot can't be initialized. Are you running NetworkManager?")
         return
     end

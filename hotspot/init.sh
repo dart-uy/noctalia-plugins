@@ -22,13 +22,13 @@ function create_connection {
     fi
 }
 
-AP_CAP=$(nmcli -f WIFI-PROPERTIES.AP device show $device | awk '{ print $2 }')
+AP_CAP=$(nmcli -g WIFI-PROPERTIES.AP device show $device)
 
 if [ -z $AP_CAP ]; then
     exit 1
 fi
 
-connection_state=$(nmcli connection show Hotspot 2>/dev/null | awk '/GENERAL.STATE/ { print $2 }')
+connection_state=$(nmcli -g GENERAL.STATE connection show Hotspot 2>/dev/null)
 
 # connection does not exist
 if [ $? != 0 ]; then
