@@ -5,24 +5,23 @@
 
 set -e
 
-readonly device=$1
-readonly ssid=$2
-readonly password=$3
-readonly security=$4
-
-readonly band=$5
-readonly channel=$6
-readonly channel_width=$7
+DEVICE=$1
+SSID=$2
+PSK=$3
+SEC=$4
+BAND=$5
+CHANNEL=$6
+CHANNELWIDTH=$7
 
 function create_connection {
-    nmcli device wifi hotspot ifname $device con-name Hotspot 2>/dev/null
+    nmcli device wifi hotspot ifname $DEVICE con-name Hotspot 2>/dev/null
 
     if [ $? != 0 ]; then
         exit 2
     fi
 }
 
-AP_CAP=$(nmcli -g WIFI-PROPERTIES.AP device show $device)
+AP_CAP=$(nmcli -g WIFI-PROPERTIES.AP device show $DEVICE)
 
 if [ -z $AP_CAP ]; then
     exit 1
@@ -36,12 +35,12 @@ if [ $? != 0 ]; then
 fi
 
 nmcli connection modify Hotspot \
-    802-11-wireless.ssid $ssid \
-    802-11-wireless-security.key-mgmt $security \
-    802-11-wireless-security.psk $password \
-    802-11-wireless.band $band \
-    802-11-wireless.channel $channel \
-    802-11-wireless.channel-width $channel_width \
+    802-11-wireless.ssid $SSID \
+    802-11-wireless-security.key-mgmt $SEC \
+    802-11-wireless-security.psk $PSK \
+    802-11-wireless.band $BAND \
+    802-11-wireless.channel $CHANNEL \
+    802-11-wireless.channel-width $CHANNELWIDTH \
     &>/dev/null
 
 # Check if Hotspot is on, variable must be unset if awk filter returns nothing
