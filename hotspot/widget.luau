@@ -4,6 +4,7 @@ local active = false
 
 local function applyStatus(status: string)
     if type(status) ~= "table" then
+        noctalia.log("Hotspot widget widget: Invalid status")
         return -- status is invalid, don't process it
     end
 
@@ -35,7 +36,7 @@ end
 
 function onClick()
     if not available then return end
-    send(if not active then "on" else "off")
+    send(active and "on" or "off")
 end
 
 applyStatus(noctalia.state.get("status"))

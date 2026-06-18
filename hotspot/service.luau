@@ -56,12 +56,13 @@ local function initHotspot()
 end
 
 function onIpc(event, payload)
+    noctalia.log(`Hotspot ipc event: {tostring(event)}`)
     if event == "on" then
         toggle("up")
     elseif event == "off" then
         toggle("down")
     else
-        noctalia.log("hotspot plugin: unknown command '" .. tostring(event) .. "'")
+        noctalia.log(`Hotspot IPC: unknown action {tostring(event)}`)
     end
 end
 

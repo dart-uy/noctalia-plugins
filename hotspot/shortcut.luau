@@ -5,6 +5,7 @@ local available = false
 
 local function applyStatus(status)
     if type(status) ~= "table" then
+        noctalia.log("Hotspot plugin shortcut: Invalid status")
         return -- status is invalid, don't process it
     end
 
@@ -23,7 +24,7 @@ end
 
 function onClick()
     if not available then return end
-    send(if not active then "on" else "off")
+    send(active and "on" or "off")
 end
 
 applyStatus(noctalia.state.get("status"))
