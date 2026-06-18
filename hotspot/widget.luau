@@ -20,7 +20,7 @@ local function applyStatus(status: string)
         barWidget.setGlyph("access-point")
         barWidget.setGlyphColor("primary")
         barWidget.setColor("primary")
-        barWidget.setTooltip(`{status.ssid} {if status.band == "a" then "5GHz" else "2.4GHz"} — {status.security}`)
+        barWidget.setTooltip(`{status.ssid} {if status.band == "a" then "5GHz" else "2.4GHz"} — Active devices: {status.clients}`)
     else
         barWidget.setGlyph("access-point-off")
         barWidget.setGlyphColor("on_surface_variant")

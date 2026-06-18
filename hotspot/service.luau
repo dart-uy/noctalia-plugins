@@ -11,8 +11,15 @@ local channel_width = noctalia.getConfig("channel-width")
 
 local active = false
 local available = false
+local clients = {}
 
 local function publishStatus()
+    local activeClients = 0
+    for _, client in ipairs(clients) do
+        local state = table.concat(client.state)
+        if state == "FAILED" then continue end
+        activeClients += 1
+    end
     noctalia.state.set("status", {
         device = device,
         ssid = ssid,
@@ -20,7 +27,8 @@ local function publishStatus()
         band = band,
         channel = channel,
         active = active,
-        available = available
+        available = available,
+        clients = activeClients
     })
 end
 
@@ -53,6 +61,21 @@ local function initHotspot()
         end
         publishStatus()
     end)
+end
+
+local function getClients()
+    if not active then return end
+    noctalia.runAsync("ip -s -j neigh show dev " .. device .. " 2>/dev/null", function(result)
+        if result.stdout == "[]" or result.exitCode ~= 0 then return end
+        clients = noctalia.json.decode(result.stdout)
+        publishStatus()
+    end)
+end
+
+noctalia.setUpdateInterval(5000)
+
+function update()
+    getClients()
 end
 
 function onIpc(event, payload)

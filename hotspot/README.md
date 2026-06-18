@@ -57,7 +57,7 @@ If hotspot is *on* it'll be restarted as you change some setting.
 > Creating virtual interfaces with `iw` doesn't make it permanent
 > and you have to make it again after reboot.
 > Please, if wanna do it permanent use systemd.netdev or
-> systemd unti file. [BBS](https://bbs.archlinux.org/viewtopic.php?pid=2126424#p2126424)
+> systemd unit file. [BBS](https://bbs.archlinux.org/viewtopic.php?pid=2126424#p2126424)
 
 Configuration above only works with wired/ethernet connections and
 using your wifi card as client and access point at the same time
@@ -80,5 +80,5 @@ Take up your connection and the plugin.
 
 Will be adding some features and automatization as it goes.
 - Let repeater mode less painful
-+ Get clients connected (IP, MAC)
++ Full client information
 * More widget customization

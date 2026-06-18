@@ -1,7 +1,7 @@
 [[plugin]]
 id = "dart/hotspot"
 name = "Hotspot"
-version = "1.0.0"
+version = "1.1.0"
 author = "dart"
 license = "MIT"
 icon = "access-point"
