@@ -20,7 +20,7 @@ Set SSID and Password fields too to begin with and it should work.
 
 Add a shortcut or widget and toggle it.
 
-## Firewall
+### Firewall
 
 `nmcli` creates basic rules for *ufw* or a zone for *firewalld*.
 If you wanna expose services between clients and you home network
