@@ -20,6 +20,14 @@ Set SSID and Password fields too to begin with and it should work.
 
 Add a shortcut or widget and toggle it.
 
+## Firewall
+
+`nmcli` creates basic rules for *ufw* or a zone for *firewalld*.
+If you wanna expose services between clients and you home network
+add specific rules for *ufw* or services to you firewalld zone.
+By default, hotspot connection wouldn't be on firewalld nm-shared zone 
+so, add it first.
+
 ### 5GHz
 To enable 5GHz first set regdomain to US `iw reg set US` (can use your
 country code as well, and it is recommended) this reconfigure your
@@ -47,7 +55,7 @@ If hotspot is *on* it'll be restarted as you change some setting.
 
 > [!NOTE]
 > Creating virtual interfaces with `iw` doesn't make it permanent
-> and you have to make it again this steps after reboot.
+> and you have to make it again after reboot.
 > Please, if wanna do it permanent use systemd.netdev or
 > systemd unti file. [BBS](https://bbs.archlinux.org/viewtopic.php?pid=2126424#p2126424)
 
