@@ -45,6 +45,12 @@ If hotspot is *on* it'll be restarted as you change some setting.
 > Usually this happends with old ones.
 > Link: [Arch:Talk](https://wiki.archlinux.org/title/Talk:Software_access_point#c-Warshipper-20240116182500-Two_interfaces_on_same_card) [Kernel](https://github.com/lakinduakash/linux-wifi-hotspot/blob/75f48a929bd336b3f6ddf2b158a21e76505e19d4/src/scripts/create_ap#L296)
 
+> [!NOTE]
+> Creating virtual interfaces with `iw` doesn't make it permanent
+> and you have to make it again this steps after reboot.
+> Please, if wanna do it permanent use systemd.netdev or
+> systemd unti file. [BBS](https://bbs.archlinux.org/viewtopic.php?pid=2126424#p2126424)
+
 Configuration above only works with wired/ethernet connections and
 using your wifi card as client and access point at the same time
 needs some steps.
